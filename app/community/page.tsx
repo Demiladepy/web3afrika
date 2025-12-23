@@ -1,5 +1,6 @@
 import { Terminal, Trophy, Play, ArrowRight, Shield, TrendingUp, Plus, Quote, X, Linkedin, Download } from "lucide-react";
 import Link from "next/link";
+import { NavbarConnectButton } from "@/components/NavbarConnectButton";
 
 export default function CommunityPage() {
   return (
@@ -29,9 +30,7 @@ export default function CommunityPage() {
             <Link href="/" className="text-gray-300 hover:text-[#00ff88] transition-colors font-medium">Home</Link>
             <Link href="/vision" className="text-gray-300 hover:text-[#00ff88] transition-colors font-medium">2025 Vision</Link>
             <Link href="/community" className="text-[#00ff88] font-medium">Community Wins</Link>
-            <button className="px-5 py-2.5 bg-gradient-to-r from-[#0C6E5F] to-[#09705F] hover:from-[#00ff88] hover:to-[#0C6E5F] text-white hover:text-black font-bold rounded-lg transition-all shadow-lg hover:shadow-xl hover:scale-105">
-              Connect Wallet
-            </button>
+            <NavbarConnectButton />
           </div>
         </div>
       </nav>

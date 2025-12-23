@@ -1,4 +1,5 @@
 import { Generator } from "@/components/Generator";
+import { NavbarConnectButton } from "@/components/NavbarConnectButton";
 import { Terminal, TrendingUp, Users, Globe2, Code2 } from "lucide-react";
 import Link from "next/link";
 
@@ -31,9 +32,7 @@ export default function Home() {
             <Link href="/" className="text-[#00ff88] font-medium">Home</Link>
             <Link href="/vision" className="text-gray-300 hover:text-[#00ff88] transition-colors font-medium">2025 Vision</Link>
             <Link href="/community" className="text-gray-300 hover:text-[#00ff88] transition-colors font-medium">Community Wins</Link>
-            <button className="px-5 py-2.5 bg-gradient-to-r from-[#0C6E5F] to-[#09705F] hover:from-[#00ff88] hover:to-[#0C6E5F] text-white hover:text-black font-bold rounded-lg transition-all shadow-lg hover:shadow-xl hover:scale-105">
-              Connect Wallet
-            </button>
+            <NavbarConnectButton />
           </div>
         </div>
       </nav>
@@ -55,7 +54,7 @@ export default function Home() {
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-card border border-[#EE3C22]/30 mb-4">
             <span className="text-xs font-bold text-[#EE3C22] uppercase tracking-wider">2025: YEAR OF SCALING</span>
           </div>
-          
+
           <h1 className="text-7xl md:text-9xl font-black tracking-tighter leading-none">
             <span className="block text-white">YOUR BUILDER</span>
             <span className="block glow-green text-[#00ff88] mt-2">PERSONA</span>

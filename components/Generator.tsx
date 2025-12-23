@@ -5,8 +5,11 @@ import { BuilderCard } from './BuilderCard';
 import { ShareSquare } from './ShareSquare';
 import { UserStats, PersonaType, personas } from '../types';
 import { toPng } from 'html-to-image';
-import { Download, Wallet, Loader2, Sparkles, RefreshCw, Image as ImageIcon } from 'lucide-react';
+import { Download, Wallet, Loader2, Sparkles, RefreshCw, Image as ImageIcon, LogOut } from 'lucide-react';
 import { cn } from '../lib/utils';
+import { useAccount, useConnect, useDisconnect } from 'wagmi';
+import { injected } from 'wagmi/connectors';
+import { useEffect } from 'react';
 
 const MOCK_DATA: UserStats = {
     name: "Crypto User",
@@ -19,27 +22,51 @@ const MOCK_DATA: UserStats = {
 };
 
 export function Generator() {
-    const [loading, setLoading] = useState(false);
+
     const [stats, setStats] = useState<UserStats>(MOCK_DATA);
     const [mode, setMode] = useState<'card' | 'square'>('card');
     const cardRef = useRef<HTMLDivElement>(null);
     const squareRef = useRef<HTMLDivElement>(null);
 
-    const handleConnect = () => {
-        setLoading(true);
-        setTimeout(() => {
-            const keys = Object.keys(personas) as PersonaType[];
-            const randomPersona = keys[Math.floor(Math.random() * keys.length)];
+    const { address, isConnected } = useAccount();
+    const { connect, isPending } = useConnect();
+    const { disconnect } = useDisconnect();
+    const [isAnalyzing, setIsAnalyzing] = useState(false);
 
-            setStats({
-                ...MOCK_DATA,
-                persona: randomPersona,
-                transactions: Math.floor(Math.random() * 500) + 50,
-                topChain: ["Arbitrum", "Scroll", "Oasis", "Base", "Celo"][Math.floor(Math.random() * 5)],
-                gasSpent: (Math.random() * 0.5).toFixed(3) + " ETH"
-            });
-            setLoading(false);
-        }, 1500);
+    // Generate persona when wallet is connected
+    useEffect(() => {
+        if (isConnected && address) {
+            setIsAnalyzing(true);
+            // Simulate analysis time even after connection for effect
+            const timer = setTimeout(() => {
+                const keys = Object.keys(personas) as PersonaType[];
+                const randomPersona = keys[Math.floor(Math.random() * keys.length)];
+
+                const formattedAddress = address
+                    ? (address.slice(0, 6) + "..." + address.slice(-4))
+                    : "0x1234...5678";
+
+                setStats({
+                    ...MOCK_DATA,
+                    name: formattedAddress,
+                    persona: randomPersona,
+                    transactions: Math.floor(Math.random() * 500) + 50,
+                    topChain: ["Arbitrum", "Scroll", "Oasis", "Base", "Celo"][Math.floor(Math.random() * 5)],
+                    gasSpent: (Math.random() * 0.5).toFixed(3) + " ETH"
+                });
+                setIsAnalyzing(false);
+            }, 1500);
+            return () => clearTimeout(timer);
+        }
+    }, [isConnected, address]);
+
+    const handleConnect = () => {
+        if (isConnected) {
+            disconnect();
+            setStats(MOCK_DATA); // Reset to mock data on disconnect
+        } else {
+            connect({ connector: injected() });
+        }
     };
 
     const downloadImage = useCallback(async () => {
@@ -49,7 +76,7 @@ export function Generator() {
         try {
             const dataUrl = await toPng(ref.current, { cacheBust: true, pixelRatio: 2 });
             const link = document.createElement('a');
-            link.download = `web3afrika-wrapped-${mode}-${Date.now()}.png`;
+            link.download = 'web3afrika-wrapped-' + mode + '-' + Date.now() + '.png';
             link.href = dataUrl;
             link.click();
         } catch (err) {
@@ -97,13 +124,18 @@ export function Generator() {
                     {/* Connect Button */}
                     <button
                         onClick={handleConnect}
-                        disabled={loading}
+                        disabled={isPending || isAnalyzing}
                         className="w-full py-6 px-8 bg-gradient-to-r from-[#0C6E5F] to-[#00ff88] hover:from-[#00ff88] hover:to-[#0C6E5F] disabled:opacity-50 disabled:cursor-not-allowed text-black hover:text-white font-black text-lg uppercase tracking-wider rounded-2xl transition-all duration-300 flex items-center justify-center gap-3 shadow-2xl hover:shadow-[#00ff88]/50 hover:scale-[1.02] active:scale-[0.98]"
                     >
-                        {loading ? (
+                        {isPending || isAnalyzing ? (
                             <>
                                 <Loader2 className="animate-spin w-6 h-6" />
-                                Analyzing Chain...
+                                {isPending ? 'Connecting...' : 'Analyzing Chain...'}
+                            </>
+                        ) : isConnected ? (
+                            <>
+                                <LogOut className="w-6 h-6" />
+                                Disconnect {address?.slice(0, 4)}...{address?.slice(-4)}
                             </>
                         ) : (
                             <>
