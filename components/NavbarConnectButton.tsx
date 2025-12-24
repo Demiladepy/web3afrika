@@ -9,6 +9,11 @@ export function NavbarConnectButton() {
     const { address, isConnected } = useAccount();
     const { connect, isPending } = useConnect();
     const { disconnect } = useDisconnect();
+    const [mounted, setMounted] = React.useState(false);
+
+    React.useEffect(() => {
+        setMounted(true);
+    }, []);
 
     const handleConnect = () => {
         if (isConnected) {
@@ -17,6 +22,18 @@ export function NavbarConnectButton() {
             connect({ connector: injected() });
         }
     };
+
+    if (!mounted) {
+        return (
+            <button
+                disabled
+                className="px-5 py-2.5 bg-gradient-to-r from-[#0C6E5F] to-[#09705F] text-white opacity-50 font-bold rounded-lg flex items-center gap-2"
+            >
+                <Wallet className="w-4 h-4" />
+                <span>Connect Wallet</span>
+            </button>
+        );
+    }
 
     return (
         <button

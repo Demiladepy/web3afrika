@@ -1,8 +1,55 @@
+"use client";
+
 import { Terminal, Rocket, Wallet, Server, Zap, Brain, Fingerprint, DollarSign, ArrowRight, Calendar } from "lucide-react";
 import Link from "next/link";
 import { NavbarConnectButton } from "@/components/NavbarConnectButton";
+import { useState } from "react";
 
 export default function VisionPage() {
+  const [activeQuarter, setActiveQuarter] = useState('Q1');
+
+  const roadmap = {
+    Q1: {
+      title: "Decentralized Intelligence",
+      description: "Launching autonomous agents that can verify compute and run decentralized AI models directly on-chain.",
+      project: "NeuroLink",
+      detail: "A decentralized marketplace for AI models tailored for African linguistic data.",
+      icon: Brain,
+      color: "text-[#0C6E5F]",
+      border: "border-[#0C6E5F]"
+    },
+    Q2: {
+      title: "Real-World Impact",
+      description: "Bridging the gap with stablecoin payments for everyday transactions and localized on-chain identity solutions.",
+      project: "PayAfrik",
+      detail: "Zero-gas stablecoin rails for merchants across 12 countries.",
+      icon: Wallet,
+      color: "text-[#E05D3A]",
+      border: "border-[#E05D3A]"
+    },
+    Q3: {
+      title: "Infrastructure Expansion",
+      description: "Deploying African-native L2 nodes to reduce latency and ensure censorship resistance.",
+      project: "AfriNode",
+      detail: "Validator nodes in Lagos, Nairobi, and Cairo.",
+      icon: Server,
+      color: "text-[#0C6E5F]",
+      border: "border-[#0C6E5F]"
+    },
+    Q4: {
+      title: "The Renaissance",
+      description: "Full DAO governance transition and launch of the African Builder Fund.",
+      project: "GovDAO",
+      detail: "On-chain voting for community grants.",
+      icon: Zap,
+      color: "text-[#E05D3A]",
+      border: "border-[#E05D3A]"
+    }
+  };
+
+  const current = roadmap[activeQuarter as keyof typeof roadmap];
+  const Icon = current.icon;
+
   return (
     <main className="min-h-screen relative bg-black scanlines">
       {/* Matrix grid background */}
@@ -28,7 +75,7 @@ export default function VisionPage() {
 
           <div className="flex items-center gap-6 text-sm">
             <Link href="/" className="text-gray-300 hover:text-[#00ff88] transition-colors font-medium">Home</Link>
-            <Link href="/vision" className="text-[#00ff88] font-medium">2025 Vision</Link>
+            <Link href="/vision" className="text-[#00ff88] font-medium">2025 Impact</Link>
             <Link href="/community" className="text-gray-300 hover:text-[#00ff88] transition-colors font-medium">Community</Link>
             <NavbarConnectButton />
           </div>
@@ -36,26 +83,17 @@ export default function VisionPage() {
       </nav>
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 py-16">
-        {/* Status Badge */}
-        <div className="flex justify-center mb-12">
-          <div className="inline-flex items-center gap-3 px-6 py-3 glass-card rounded-full border border-[#00ff88]/30">
-            <div className="w-2.5 h-2.5 rounded-full bg-[#00ff88] pulse-green shadow-lg shadow-[#00ff88]/50"></div>
-            <span className="text-sm font-mono text-[#00ff88] uppercase tracking-wider font-bold">
-              SYSTEM STATUS: SCALING
-            </span>
-          </div>
-        </div>
 
         {/* Hero Section */}
         <header className="mb-20 text-center space-y-8">
           <h1 className="text-7xl md:text-9xl font-black tracking-tighter leading-none">
             <span className="block text-white">2025: YEAR OF</span>
-            <span className="block glow-green text-[#00ff88] mt-2">SCALING</span>
+            <span className="block glow-green text-[#00ff88] mt-2">IMPACT</span>
           </h1>
 
           <p className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto font-medium leading-relaxed">
-            We spent 2024 laying the foundation. Now, we activate the protocol for exponential growth.{" "}
-            <span className="text-[#EE3C22] font-bold">Are you ready to build?</span>
+            We spent 2025 scaling. Now, we celebrate the milestones.{" "}
+            <span className="text-[#E05D3A] font-bold">Are you ready to build?</span>
           </p>
 
           <div className="flex items-center justify-center gap-4 flex-wrap">
@@ -88,20 +126,21 @@ export default function VisionPage() {
 
         {/* Roadmap Section */}
         <div className="mb-32">
-          <div className="flex items-center gap-4 mb-12">
-            <div className="w-1 h-12 bg-gradient-to-b from-[#EE3C22] to-[#00ff88]"></div>
+          <div className="flex items-center flex-wrap gap-4 mb-12">
+            <div className="w-1 h-12 bg-gradient-to-b from-[#E05D3A] to-[#00ff88]"></div>
             <div>
-              <div className="text-sm font-bold text-[#EE3C22] uppercase tracking-wider mb-1">THE ROADMAP</div>
-              <h2 className="text-5xl font-black text-white">Strategic Pillars</h2>
+              <div className="text-sm font-bold text-[#E05D3A] uppercase tracking-wider mb-1">THE JOURNEY</div>
+              <h2 className="text-5xl font-black text-white">2025 Milestones</h2>
             </div>
-            <div className="flex-1"></div>
-            <div className="flex gap-2">
+            <div className="flex-1 min-w-[20px]"></div>
+            <div className="flex gap-2 bg-black/40 p-1 rounded-full border border-white/10">
               {['Q1', 'Q2', 'Q3', 'Q4'].map((q) => (
                 <button
                   key={q}
-                  className={`px-4 py-2 rounded-full text-sm font-bold transition-all ${q === 'Q1'
-                      ? 'bg-[#0C6E5F] text-white'
-                      : 'glass-card text-gray-400 hover:text-white'
+                  onClick={() => setActiveQuarter(q)}
+                  className={`px-6 py-2 rounded-full text-sm font-bold transition-all ${activeQuarter === q
+                    ? 'bg-[#0C6E5F] text-white shadow-lg'
+                    : 'text-gray-400 hover:text-white hover:bg-white/5'
                     }`}
                 >
                   {q}
@@ -110,98 +149,32 @@ export default function VisionPage() {
             </div>
           </div>
 
-          {/* Timeline */}
-          <div className="relative pl-8 md:pl-12">
-            {/* Vertical line */}
-            <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#0C6E5F] via-[#00ff88] to-[#EE3C22]"></div>
+          {/* Interactive Display */}
+          <div className="glass-card p-12 rounded-3xl border border-white/10 relative overflow-hidden min-h-[400px] flex items-center">
+            <div className="absolute inset-0 pattern-mudcloth opacity-10 pointer-events-none"></div>
 
-            {/* Pillar 1 */}
-            <div className="relative mb-16">
-              <div className="absolute -left-10 top-0 w-6 h-6 rounded-full bg-[#0C6E5F] border-4 border-black shadow-lg"></div>
-              <div className="glass-card p-8 rounded-2xl hover-lift glow-hover">
-                <div className="flex items-start gap-4 mb-4">
-                  <div className="w-16 h-16 rounded-xl bg-[#0C6E5F]/20 border border-[#0C6E5F]/40 flex items-center justify-center">
-                    <Brain className="w-8 h-8 text-[#0C6E5F]" />
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-2">
-                      <h3 className="text-2xl font-black text-white">Decentralized Intelligence</h3>
-                      <span className="px-3 py-1 bg-[#0C6E5F]/20 border border-[#0C6E5F]/40 rounded-full text-xs font-bold text-[#0C6E5F]">
-                        Q1 2025
-                      </span>
-                    </div>
-                    <p className="text-gray-300 leading-relaxed mb-4">
-                      Launching autonomous agents that can verify compute and run decentralized AI models directly on-chain.
-                    </p>
-                    <div className="glass-card p-4 rounded-xl border border-white/5">
-                      <div className="flex items-start gap-3">
-                        <Brain className="w-5 h-5 text-[#0C6E5F] mt-0.5" />
-                        <div>
-                          <div className="font-bold text-white mb-1">Project: NeuroLink</div>
-                          <p className="text-sm text-gray-400">
-                            A decentralized marketplace for AI models tailored for African linguistic data.
-                          </p>
-                        </div>
-                        <ArrowRight className="w-4 h-4 text-gray-500 ml-auto" />
-                      </div>
-                    </div>
-                  </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative z-10 w-full">
+              <div>
+                <div className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full border ${current.border} bg-black/20 mb-6`}>
+                  <Calendar className={`w-4 h-4 ${current.color}`} />
+                  <span className={`text-xs font-bold ${current.color} uppercase tracking-wider`}>Quarter: {activeQuarter} 2025</span>
                 </div>
+                <h3 className="text-5xl font-black text-white mb-6 leading-tight">{current.title}</h3>
+                <p className="text-xl text-gray-300 leading-relaxed mb-8">
+                  {current.description}
+                </p>
               </div>
-            </div>
 
-            {/* Pillar 2 */}
-            <div className="relative mb-16">
-              <div className="absolute -left-10 top-0 w-6 h-6 rounded-full bg-[#EE3C22] border-4 border-black shadow-lg"></div>
-              <div className="glass-card p-8 rounded-2xl hover-lift glow-hover">
-                <div className="flex items-start gap-4 mb-4">
-                  <div className="w-16 h-16 rounded-xl bg-[#EE3C22]/20 border border-[#EE3C22]/40 flex items-center justify-center">
-                    <Wallet className="w-8 h-8 text-[#EE3C22]" />
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-2">
-                      <h3 className="text-2xl font-black text-white">Real-World Impact</h3>
-                      <span className="px-3 py-1 bg-[#EE3C22]/20 border border-[#EE3C22]/40 rounded-full text-xs font-bold text-[#EE3C22]">
-                        Q2 2025
-                      </span>
-                    </div>
-                    <p className="text-gray-300 leading-relaxed mb-4">
-                      Bridging the gap with stablecoin payments for everyday transactions and localized on-chain identity solutions.
-                    </p>
-                    <div className="glass-card p-4 rounded-xl border border-white/5">
-                      <div className="flex items-start gap-3">
-                        <Wallet className="w-5 h-5 text-[#EE3C22] mt-0.5" />
-                        <div>
-                          <div className="font-bold text-white mb-1">Project: PayAfrik</div>
-                          <p className="text-sm text-gray-400">
-                            Zero-gas stablecoin rails for merchants across 12 countries.
-                          </p>
-                        </div>
-                        <ArrowRight className="w-4 h-4 text-gray-500 ml-auto" />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Pillar 3 */}
-            <div className="relative">
-              <div className="absolute -left-10 top-0 w-6 h-6 rounded-full bg-[#0C6E5F] border-4 border-black shadow-lg"></div>
-              <div className="glass-card p-8 rounded-2xl hover-lift glow-hover">
+              <div className="glass-card p-8 rounded-2xl bg-black/40 border-white/5">
                 <div className="flex items-start gap-4">
-                  <div className="w-16 h-16 rounded-xl bg-[#0C6E5F]/20 border border-[#0C6E5F]/40 flex items-center justify-center">
-                    <Server className="w-8 h-8 text-[#0C6E5F]" />
+                  <div className={`w-16 h-16 rounded-xl bg-white/5 flex items-center justify-center ${current.color}`}>
+                    <Icon className="w-8 h-8" />
                   </div>
-                  <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-2">
-                      <h3 className="text-2xl font-black text-white">Infrastructure Expansion</h3>
-                      <span className="px-3 py-1 bg-[#0C6E5F]/20 border border-[#0C6E5F]/40 rounded-full text-xs font-bold text-[#0C6E5F]">
-                        Q3-Q4 2025
-                      </span>
-                    </div>
-                    <p className="text-gray-300 leading-relaxed">
-                      Deploying African-native L2 nodes to reduce latency and ensure censorship resistance.
+                  <div>
+                    <div className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-2">Featured Project</div>
+                    <div className="text-2xl font-black text-white mb-2">{current.project}</div>
+                    <p className="text-gray-400">
+                      {current.detail}
                     </p>
                   </div>
                 </div>
@@ -214,32 +187,35 @@ export default function VisionPage() {
         <div className="mb-32">
           <h2 className="text-5xl font-black text-white text-center mb-16">Tech Stack Focus</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="glass-card p-8 rounded-2xl hover-lift glow-hover">
-              <div className="w-16 h-16 rounded-xl bg-[#0C6E5F]/20 border border-[#0C6E5F]/40 flex items-center justify-center mb-6">
+            <div className="glass-card p-8 rounded-2xl hover-lift glow-hover relative overflow-hidden">
+              <div className="absolute inset-0 pattern-kente opacity-5 pointer-events-none"></div>
+              <div className="w-16 h-16 rounded-xl bg-[#0C6E5F]/20 border border-[#0C6E5F]/40 flex items-center justify-center mb-6 relative z-10">
                 <Zap className="w-8 h-8 text-[#0C6E5F]" />
               </div>
-              <h3 className="text-2xl font-black text-white mb-3">L2 Scaling</h3>
-              <p className="text-gray-300 leading-relaxed">
+              <h3 className="text-2xl font-black text-white mb-3 relative z-10">L2 Scaling</h3>
+              <p className="text-gray-300 leading-relaxed relative z-10">
                 Implementing ZK-rollups to minimize transaction costs while maintaining Ethereum-level security.
               </p>
             </div>
 
-            <div className="glass-card p-8 rounded-2xl hover-lift glow-hover">
-              <div className="w-16 h-16 rounded-xl bg-[#EE3C22]/20 border border-[#EE3C22]/40 flex items-center justify-center mb-6">
-                <Fingerprint className="w-8 h-8 text-[#EE3C22]" />
+            <div className="glass-card p-8 rounded-2xl hover-lift glow-hover relative overflow-hidden">
+              <div className="absolute inset-0 pattern-mudcloth opacity-5 pointer-events-none"></div>
+              <div className="w-16 h-16 rounded-xl bg-[#E05D3A]/20 border border-[#E05D3A]/40 flex items-center justify-center mb-6 relative z-10">
+                <Fingerprint className="w-8 h-8 text-[#E05D3A]" />
               </div>
-              <h3 className="text-2xl font-black text-white mb-3">Onchain Identity</h3>
-              <p className="text-gray-300 leading-relaxed">
+              <h3 className="text-2xl font-black text-white mb-3 relative z-10">Onchain Identity</h3>
+              <p className="text-gray-300 leading-relaxed relative z-10">
                 Self-sovereign identity protocols allowing users to own their reputation across dApps.
               </p>
             </div>
 
-            <div className="glass-card p-8 rounded-2xl hover-lift glow-hover">
-              <div className="w-16 h-16 rounded-xl bg-[#0C6E5F]/20 border border-[#0C6E5F]/40 flex items-center justify-center mb-6">
+            <div className="glass-card p-8 rounded-2xl hover-lift glow-hover relative overflow-hidden">
+              <div className="absolute inset-0 pattern-kente opacity-5 pointer-events-none"></div>
+              <div className="w-16 h-16 rounded-xl bg-[#0C6E5F]/20 border border-[#0C6E5F]/40 flex items-center justify-center mb-6 relative z-10">
                 <DollarSign className="w-8 h-8 text-[#0C6E5F]" />
               </div>
-              <h3 className="text-2xl font-black text-white mb-3">DeFi Primitives</h3>
-              <p className="text-gray-300 leading-relaxed">
+              <h3 className="text-2xl font-black text-white mb-3 relative z-10">DeFi Primitives</h3>
+              <p className="text-gray-300 leading-relaxed relative z-10">
                 Building lending and borrowing protocols specifically for SME financing in emerging markets.
               </p>
             </div>
@@ -248,7 +224,7 @@ export default function VisionPage() {
 
         {/* CTA Section */}
         <div className="glass-card p-12 rounded-3xl border border-[#00ff88]/30 text-center">
-          <h2 className="text-4xl font-black text-white mb-4">Join the 2025 Cohort</h2>
+          <h2 className="text-4xl font-black text-white mb-4">Join the Next Cohort</h2>
           <p className="text-xl text-gray-300 mb-8">Get early access to developer tools and grants.</p>
           <button className="px-8 py-4 glass-card border border-white/20 hover:border-[#00ff88]/50 text-white font-black text-lg uppercase tracking-wider rounded-2xl transition-all hover:scale-105">
             Apply Now
@@ -266,13 +242,12 @@ export default function VisionPage() {
       {/* Terminal Ticker */}
       <div className="fixed bottom-0 left-0 right-0 bg-black/90 backdrop-blur-md border-t border-[#00ff88]/40 py-3 overflow-hidden z-50 shadow-2xl">
         <div className="ticker whitespace-nowrap text-sm font-mono text-[#00ff88] font-bold">
-          <span className="inline-block px-10">// BUILD_STATUS: PASSING (99.9%)</span>
+          <span className="inline-block px-10">// BUILD_STATUS: SCALING (100%)</span>
           <span className="inline-block px-10">&gt;&gt; NEW_MEMBER: @dev_david (Lagos) joined</span>
           <span className="inline-block px-10">// COMMIT: 7Faa92b [Mainnet Launch]</span>
-          <span className="inline-block px-10">&gt;&gt; EVENT: Hackathon_Nairobi_2025 [REGISTRATION OPEN]</span>
+          <span className="inline-block px-10">&gt;&gt; EVENT: Hackathon_Nairobi_2025 [COMPLETED]</span>
         </div>
       </div>
     </main>
   );
 }
-

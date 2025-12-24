@@ -28,7 +28,7 @@ export default function CommunityPage() {
 
           <div className="flex items-center gap-6 text-sm">
             <Link href="/" className="text-gray-300 hover:text-[#00ff88] transition-colors font-medium">Home</Link>
-            <Link href="/vision" className="text-gray-300 hover:text-[#00ff88] transition-colors font-medium">2025 Vision</Link>
+            <Link href="/vision" className="text-gray-300 hover:text-[#00ff88] transition-colors font-medium">2025 Impact</Link>
             <Link href="/community" className="text-[#00ff88] font-medium">Community Wins</Link>
             <NavbarConnectButton />
           </div>
@@ -44,8 +44,8 @@ export default function CommunityPage() {
           </div>
 
           <h1 className="text-7xl md:text-9xl font-black tracking-tighter leading-none">
-            <span className="block text-white">2024: THE YEAR</span>
-            <span className="block glow-green text-[#00ff88] mt-2">WE BUILT</span>
+            <span className="block text-white">2025: THE YEAR</span>
+            <span className="block glow-green text-[#00ff88] mt-2">WE SCALED</span>
           </h1>
 
           <p className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto font-medium leading-relaxed">
@@ -190,7 +190,7 @@ export default function CommunityPage() {
               </div>
               <h3 className="text-2xl font-black text-white mb-3">You're Next</h3>
               <p className="text-gray-300 leading-relaxed mb-6">
-                Start building today and be featured in our 2025 wrap up.
+                Start building today and be featured in our next wrap up.
               </p>
               <button className="w-full px-6 py-3 bg-gradient-to-r from-[#0C6E5F] to-[#00ff88] hover:from-[#00ff88] hover:to-[#0C6E5F] text-black hover:text-white font-black rounded-xl transition-all flex items-center justify-center gap-2">
                 Start Building
@@ -234,17 +234,17 @@ export default function CommunityPage() {
         <div className="glass-card p-12 rounded-3xl border border-[#00ff88]/30 text-center">
           <h2 className="text-5xl font-black text-white mb-4">READY TO SCALE?</h2>
           <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-            2024 was about building foundations. 2025 is the Year of Scaling. Join the movement and ship products that matter.
+            2025 was about scaling. 2026 is the Year of Dominance. Join the movement and ship products that matter.
           </p>
           <button className="px-8 py-4 bg-gradient-to-r from-[#0C6E5F] to-[#00ff88] hover:from-[#00ff88] hover:to-[#0C6E5F] text-black hover:text-white font-black text-lg uppercase tracking-wider rounded-2xl transition-all shadow-2xl hover:scale-105">
-            Join us for 2025
+            Join the Community
           </button>
         </div>
 
         {/* Footer */}
         <footer className="mt-20 pt-8 border-t border-[#0C6E5F]/20 flex items-center justify-between">
           <p className="text-sm font-mono text-gray-600">
-            © 2024 Web3Afrika. All rights reserved.
+            © 2025 Web3Afrika. All rights reserved.
           </p>
           <div className="flex gap-4">
             <button className="w-8 h-8 rounded-lg glass-card flex items-center justify-center hover:border-[#00ff88]/50 transition-colors">

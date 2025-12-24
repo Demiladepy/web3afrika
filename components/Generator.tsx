@@ -5,7 +5,7 @@ import { BuilderCard } from './BuilderCard';
 import { ShareSquare } from './ShareSquare';
 import { UserStats, PersonaType, personas } from '../types';
 import { toPng } from 'html-to-image';
-import { Download, Wallet, Loader2, Sparkles, RefreshCw, Image as ImageIcon, LogOut } from 'lucide-react';
+import { Download, Wallet, Loader2, Sparkles, RefreshCw, Image as ImageIcon, LogOut, Upload, MessageSquare } from 'lucide-react';
 import { cn } from '../lib/utils';
 import { useAccount, useConnect, useDisconnect } from 'wagmi';
 import { injected } from 'wagmi/connectors';
@@ -25,13 +25,22 @@ export function Generator() {
 
     const [stats, setStats] = useState<UserStats>(MOCK_DATA);
     const [mode, setMode] = useState<'card' | 'square'>('card');
+    const [userImage, setUserImage] = useState<string | null>(null);
+    const [bestMoment, setBestMoment] = useState<string>('');
     const cardRef = useRef<HTMLDivElement>(null);
     const squareRef = useRef<HTMLDivElement>(null);
+    const fileInputRef = useRef<HTMLInputElement>(null);
 
     const { address, isConnected } = useAccount();
     const { connect, isPending } = useConnect();
     const { disconnect } = useDisconnect();
     const [isAnalyzing, setIsAnalyzing] = useState(false);
+
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
 
     // Generate persona when wallet is connected
     useEffect(() => {
@@ -69,6 +78,17 @@ export function Generator() {
         }
     };
 
+    const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setUserImage(reader.result as string);
+            };
+            reader.readAsDataURL(file);
+        }
+    };
+
     const downloadImage = useCallback(async () => {
         const ref = mode === 'card' ? cardRef : squareRef;
         if (ref.current === null) return;
@@ -95,9 +115,9 @@ export function Generator() {
                     <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-[32px] blur-3xl"></div>
                     <div className="relative">
                         {mode === 'card' ? (
-                            <BuilderCard ref={cardRef} stats={stats} />
+                            <BuilderCard ref={cardRef} stats={stats} userImage={userImage} bestMoment={bestMoment} />
                         ) : (
-                            <ShareSquare ref={squareRef} stats={stats} />
+                            <ShareSquare ref={squareRef} stats={stats} userImage={userImage} bestMoment={bestMoment} />
                         )}
                     </div>
                 </div>
@@ -106,8 +126,8 @@ export function Generator() {
                 <div className="order-1 lg:order-2 space-y-8">
 
                     <div className="space-y-6">
-                        <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full glass-card border border-[#EE3C22]/30 hover:border-[#EE3C22]/50 transition-all">
-                            <Sparkles className="w-5 h-5 text-[#EE3C22]" />
+                        <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full glass-card border border-[#E05D3A]/30 hover:border-[#E05D3A]/50 transition-all">
+                            <Sparkles className="w-5 h-5 text-[#E05D3A]" />
                             <span className="text-sm font-bold tracking-wider text-white">Generate Your Card</span>
                         </div>
 
@@ -124,10 +144,15 @@ export function Generator() {
                     {/* Connect Button */}
                     <button
                         onClick={handleConnect}
-                        disabled={isPending || isAnalyzing}
+                        disabled={!mounted || isPending || isAnalyzing}
                         className="w-full py-6 px-8 bg-gradient-to-r from-[#0C6E5F] to-[#00ff88] hover:from-[#00ff88] hover:to-[#0C6E5F] disabled:opacity-50 disabled:cursor-not-allowed text-black hover:text-white font-black text-lg uppercase tracking-wider rounded-2xl transition-all duration-300 flex items-center justify-center gap-3 shadow-2xl hover:shadow-[#00ff88]/50 hover:scale-[1.02] active:scale-[0.98]"
                     >
-                        {isPending || isAnalyzing ? (
+                        {!mounted ? (
+                            <>
+                                <Wallet className="w-6 h-6" />
+                                Connect Wallet
+                            </>
+                        ) : isPending || isAnalyzing ? (
                             <>
                                 <Loader2 className="animate-spin w-6 h-6" />
                                 {isPending ? 'Connecting...' : 'Analyzing Chain...'}
@@ -182,15 +207,46 @@ export function Generator() {
                             </div>
                         </div>
 
+                        <div className="grid grid-cols-2 gap-4">
+                            <div className="space-y-2">
+                                <label className="text-xs font-bold text-white/50 uppercase tracking-wider">Role (Optional)</label>
+                                <input
+                                    type="text"
+                                    value={stats.role || ''}
+                                    onChange={(e) => setStats({ ...stats, role: e.target.value })}
+                                    placeholder="e.g. Core Contributor"
+                                    className="w-full bg-white/5 border border-white/10 rounded-xl p-3 text-sm font-medium focus:border-[#0C6E5F] focus:ring-2 focus:ring-[#0C6E5F]/20 outline-none text-white transition-all glass-card placeholder:text-white/30"
+                                />
+                            </div>
+                            <div className="space-y-2">
+                                <label className="text-xs font-bold text-white/50 uppercase tracking-wider">Your Photo</label>
+                                <input
+                                    type="file"
+                                    accept="image/*"
+                                    ref={fileInputRef}
+                                    onChange={handleImageUpload}
+                                    className="hidden"
+                                />
+                                <button
+                                    onClick={() => fileInputRef.current?.click()}
+                                    className="w-full bg-white/5 border border-white/10 rounded-xl p-3 text-sm font-medium text-white/70 hover:text-white hover:bg-white/10 transition-all flex items-center justify-center gap-2 glass-card"
+                                >
+                                    <Upload className="w-4 h-4" />
+                                    {userImage ? 'Change Photo' : 'Upload Photo'}
+                                </button>
+                            </div>
+                        </div>
+
                         <div className="space-y-2">
-                            <label className="text-xs font-bold text-white/50 uppercase tracking-wider">Role (Optional)</label>
-                            <input
-                                type="text"
-                                value={stats.role || ''}
-                                onChange={(e) => setStats({ ...stats, role: e.target.value })}
-                                placeholder="e.g. Core Contributor"
-                                className="w-full bg-white/5 border border-white/10 rounded-xl p-3 text-sm font-medium focus:border-[#0C6E5F] focus:ring-2 focus:ring-[#0C6E5F]/20 outline-none text-white transition-all glass-card placeholder:text-white/30"
+                            <label className="text-xs font-bold text-white/50 uppercase tracking-wider">Best Moment (Optional)</label>
+                            <textarea
+                                value={bestMoment}
+                                onChange={(e) => setBestMoment(e.target.value)}
+                                placeholder="My favorite moment was winning the hackathon..."
+                                maxLength={60}
+                                className="w-full bg-white/5 border border-white/10 rounded-xl p-3 text-sm font-medium focus:border-[#0C6E5F] focus:ring-2 focus:ring-[#0C6E5F]/20 outline-none text-white transition-all glass-card placeholder:text-white/30 resize-none h-20"
                             />
+                            <div className="text-right text-[10px] text-white/30">{bestMoment.length}/60</div>
                         </div>
                     </div>
 
@@ -215,7 +271,7 @@ export function Generator() {
                                 className={cn(
                                     "flex-1 px-6 py-3 rounded-lg text-sm font-bold uppercase tracking-wider transition-all duration-200",
                                     mode === 'square'
-                                        ? "bg-gradient-to-r from-[#EE3C22] to-[#EC9120] text-white shadow-lg"
+                                        ? "bg-gradient-to-r from-[#E05D3A] to-[#C77D2B] text-white shadow-lg"
                                         : "text-white/50 hover:text-white/80"
                                 )}
                             >
