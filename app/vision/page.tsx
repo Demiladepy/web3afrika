@@ -1,6 +1,6 @@
 "use client";
 
-import { Terminal, Rocket, Wallet, Server, Zap, Brain, Fingerprint, DollarSign, ArrowRight, Calendar } from "lucide-react";
+import { Terminal, Rocket, Wallet, Server, Zap, Brain, Fingerprint, CircleDollarSign, ArrowRight, Calendar, Layers, Landmark } from "lucide-react";
 import Link from "next/link";
 import { NavbarConnectButton } from "@/components/NavbarConnectButton";
 import { useState } from "react";
@@ -41,7 +41,7 @@ export default function VisionPage() {
       description: "Full DAO governance transition and launch of the African Builder Fund.",
       project: "GovDAO",
       detail: "On-chain voting for community grants.",
-      icon: Zap,
+      icon: Landmark,
       color: "text-[#E05D3A]",
       border: "border-[#E05D3A]"
     }
@@ -103,7 +103,7 @@ export default function VisionPage() {
             </button>
             <button className="px-8 py-4 glass-card border border-white/20 hover:border-[#00ff88]/50 text-white font-black text-lg uppercase tracking-wider rounded-2xl transition-all hover:scale-105 flex items-center gap-3">
               Explore Tech Stack
-              <Zap className="w-5 h-5" />
+              <Layers className="w-5 h-5" />
             </button>
           </div>
         </header>
@@ -190,7 +190,7 @@ export default function VisionPage() {
             <div className="glass-card p-8 rounded-2xl hover-lift glow-hover relative overflow-hidden">
               <div className="absolute inset-0 pattern-kente opacity-5 pointer-events-none"></div>
               <div className="w-16 h-16 rounded-xl bg-[#0C6E5F]/20 border border-[#0C6E5F]/40 flex items-center justify-center mb-6 relative z-10">
-                <Zap className="w-8 h-8 text-[#0C6E5F]" />
+                <Layers className="w-8 h-8 text-[#0C6E5F]" />
               </div>
               <h3 className="text-2xl font-black text-white mb-3 relative z-10">L2 Scaling</h3>
               <p className="text-gray-300 leading-relaxed relative z-10">
@@ -212,7 +212,7 @@ export default function VisionPage() {
             <div className="glass-card p-8 rounded-2xl hover-lift glow-hover relative overflow-hidden">
               <div className="absolute inset-0 pattern-kente opacity-5 pointer-events-none"></div>
               <div className="w-16 h-16 rounded-xl bg-[#0C6E5F]/20 border border-[#0C6E5F]/40 flex items-center justify-center mb-6 relative z-10">
-                <DollarSign className="w-8 h-8 text-[#0C6E5F]" />
+                <CircleDollarSign className="w-8 h-8 text-[#0C6E5F]" />
               </div>
               <h3 className="text-2xl font-black text-white mb-3 relative z-10">DeFi Primitives</h3>
               <p className="text-gray-300 leading-relaxed relative z-10">

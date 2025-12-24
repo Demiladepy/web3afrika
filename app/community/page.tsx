@@ -1,4 +1,6 @@
-import { Terminal, Trophy, Play, ArrowRight, Shield, TrendingUp, Plus, Quote, X, Linkedin, Download } from "lucide-react";
+"use client";
+
+import { Terminal, Trophy, Play, ArrowRight, X, Linkedin, MessageSquare, GitCommit, GitPullRequest } from "lucide-react";
 import Link from "next/link";
 import { NavbarConnectButton } from "@/components/NavbarConnectButton";
 
@@ -169,7 +171,10 @@ export default function CommunityPage() {
           <h2 className="text-5xl font-black text-white mb-12">Community Voices</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="glass-card p-6 rounded-2xl hover-lift">
-              <div className="font-mono text-xs text-[#00ff88] mb-4">&gt; console.log("Bullish");</div>
+              <div className="flex items-center gap-2 font-mono text-xs text-[#00ff88] mb-4">
+                <MessageSquare className="w-3 h-3" />
+                <span>&gt; console.log("Bullish");</span>
+              </div>
               <p className="text-gray-300 leading-relaxed mb-4 italic">
                 "Interesting to hear how intentional @olanetsoft n the team is about the community. I'm really bullish on Web3afrika!"
               </p>
@@ -177,7 +182,10 @@ export default function CommunityPage() {
             </div>
 
             <div className="glass-card p-6 rounded-2xl hover-lift">
-              <div className="font-mono text-xs text-[#00ff88] mb-4">&gt; sudo commit --message "Winner"</div>
+              <div className="flex items-center gap-2 font-mono text-xs text-[#00ff88] mb-4">
+                <GitCommit className="w-3 h-3" />
+                <span>&gt; sudo commit --message "Winner"</span>
+              </div>
               <p className="text-gray-300 leading-relaxed mb-4 italic">
                 "Excited to win this week quiz challenge at @web3afrika, and also being a first time winner in the quiz challenge 😁"
               </p>
@@ -185,7 +193,10 @@ export default function CommunityPage() {
             </div>
 
             <div className="glass-card p-6 rounded-2xl hover-lift">
-              <div className="font-mono text-xs text-[#00ff88] mb-4">&gt; git push origin main</div>
+              <div className="flex items-center gap-2 font-mono text-xs text-[#00ff88] mb-4">
+                <GitPullRequest className="w-3 h-3" />
+                <span>&gt; git push origin main</span>
+              </div>
               <p className="text-gray-300 leading-relaxed mb-4 italic">
                 "I'm super excited to be here, live and direct at @web3afrika event, witnessing the FIRST collaboration between @oasisOnchain n @ThankArbitrum! 🎉"
               </p>
@@ -232,4 +243,3 @@ export default function CommunityPage() {
     </main>
   );
 }
-

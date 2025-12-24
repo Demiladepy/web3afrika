@@ -4,8 +4,10 @@ import { Generator } from "@/components/Generator";
 import { NavbarConnectButton } from "@/components/NavbarConnectButton";
 import {
   Terminal, TrendingUp, Users, Globe2, Code2, X, Linkedin,
-  BookOpen, Award, Zap, Cpu, Palette, Megaphone, Music,
-  Play, LayoutGrid, ArrowRight, Star, ShieldCheck, Rocket
+  BookOpen, Zap, Palette, Megaphone,
+  LayoutGrid, ArrowRight, ShieldCheck, Rocket,
+  GraduationCap, MapPin, Fingerprint, Coins, Wallet, Bot, Brain, Sparkles, Building2,
+  Layers, Hammer, Radio, Ticket, Ban, CircleDollarSign, Landmark, Award
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
@@ -25,24 +27,24 @@ export default function Home() {
     {
       title: "Foundry & Geth Workflows",
       desc: "Real-world professional tooling for 2025.",
-      icon: <Terminal className="w-5 h-5 text-[#E05D3A]" />,
+      icon: <Hammer className="w-5 h-5 text-[#E05D3A]" />,
       progress: "100%",
       users: "4.8k grads"
     },
     {
       title: "On-chain Identity (DID)",
       desc: "Building the future of decentralized reputation.",
-      icon: <Users className="w-5 h-5 text-[#0C6E5F]" />,
+      icon: <Fingerprint className="w-5 h-5 text-[#0C6E5F]" />,
       progress: "100%",
       users: "3.1k grads"
     }
   ];
 
   const trends = [
-    { name: "RWA / Tokenization", color: "from-blue-500 to-cyan-500", icon: <Globe2 className="w-4 h-4" /> },
-    { name: "Stablecoin ($cNGN)", color: "from-green-500 to-emerald-500", icon: <TrendingUp className="w-4 h-4" /> },
-    { name: "AI x Web3 Agents", color: "from-purple-500 to-pink-500", icon: <Cpu className="w-4 h-4" /> },
-    { name: "Account Abstraction", color: "from-orange-500 to-red-500", icon: <Zap className="w-4 h-4" /> },
+    { name: "RWA / Tokenization", color: "from-blue-500 to-cyan-500", icon: <Landmark className="w-4 h-4" /> },
+    { name: "Stablecoin ($cNGN)", color: "from-green-500 to-emerald-500", icon: <CircleDollarSign className="w-4 h-4" /> },
+    { name: "AI x Web3 Agents", color: "from-purple-500 to-pink-500", icon: <Bot className="w-4 h-4" /> },
+    { name: "Account Abstraction", color: "from-orange-500 to-red-500", icon: <Wallet className="w-4 h-4" /> },
   ];
 
   return (
@@ -125,7 +127,7 @@ export default function Home() {
               <div className="absolute inset-0 pattern-mudcloth opacity-20 pointer-events-none"></div>
               <div className="flex items-center gap-3 mb-5 relative z-10">
                 <div className="w-12 h-12 rounded-lg bg-[#0C6E5F]/20 border border-[#0C6E5F]/30 flex items-center justify-center">
-                  <BookOpen className="w-6 h-6 text-[#00ff88]" />
+                  <GraduationCap className="w-6 h-6 text-[#00ff88]" />
                 </div>
                 <span className="text-xs font-bold text-gray-400 uppercase tracking-wider">Talent Pipeline</span>
               </div>
@@ -141,7 +143,7 @@ export default function Home() {
               <div className="absolute inset-0 pattern-kente opacity-10 pointer-events-none"></div>
               <div className="flex items-center gap-3 mb-5 relative z-10">
                 <div className="w-12 h-12 rounded-lg bg-[#E05D3A]/20 border border-[#E05D3A]/30 flex items-center justify-center">
-                  <Code2 className="w-6 h-6 text-[#E05D3A]" />
+                  <MapPin className="w-6 h-6 text-[#E05D3A]" />
                 </div>
                 <span className="text-xs font-bold text-gray-400 uppercase tracking-wider">Pan-African Reach</span>
               </div>
@@ -157,7 +159,7 @@ export default function Home() {
               <div className="absolute inset-0 pattern-mudcloth opacity-20 pointer-events-none"></div>
               <div className="flex items-center gap-3 mb-5 relative z-10">
                 <div className="w-12 h-12 rounded-lg bg-[#0C6E5F]/20 border border-[#0C6E5F]/30 flex items-center justify-center">
-                  <TrendingUp className="w-6 h-6 text-[#00ff88]" />
+                  <Ticket className="w-6 h-6 text-[#00ff88]" />
                 </div>
                 <span className="text-xs font-bold text-gray-400 uppercase tracking-wider">Mass Adoption</span>
               </div>
@@ -172,7 +174,7 @@ export default function Home() {
             <div className="glass-card p-8 rounded-2xl group hover:border-[#00ff88]/50 transition-all hover-lift glow-hover">
               <div className="flex items-center gap-3 mb-5">
                 <div className="w-12 h-12 rounded-lg bg-[#0C6E5F]/20 border border-[#0C6E5F]/30 flex items-center justify-center">
-                  <Globe2 className="w-6 h-6 text-[#00ff88]" />
+                  <Building2 className="w-6 h-6 text-[#00ff88]" />
                 </div>
                 <span className="text-xs font-bold text-gray-400 uppercase tracking-wider">Major Hubs</span>
               </div>
@@ -181,7 +183,7 @@ export default function Home() {
                 <span className="px-3 py-1.5 bg-[#0C6E5F]/20 border border-[#0C6E5F]/40 rounded-lg text-xs font-bold text-[#00ff88]">Lagos</span>
                 <span className="px-3 py-1.5 bg-[#0C6E5F]/20 border border-[#0C6E5F]/40 rounded-lg text-xs font-bold text-[#00ff88]">Nairobi</span>
                 <span className="px-3 py-1.5 bg-[#0C6E5F]/20 border border-[#0C6E5F]/40 rounded-lg text-xs font-bold text-[#00ff88]">Accra</span>
-                <span className="px-3 py-1.5 bg-[#0C6E5F]/20 border border-[#0C6E5F]/40 rounded-lg text-xs font-bold text-[#00ff88]">Cape Town</span>
+                <span className="px-3 py-1.5 bg-[#0C6E5F]/20 border border-[#0C6E5F]/40 rounded-lg text-xs font-bold text-[#00ff88]">Kigali</span>
               </div>
             </div>
           </div>
@@ -329,11 +331,13 @@ export default function Home() {
               <div className="flex flex-col md:flex-row gap-10 items-center">
                 <div className="w-full md:w-1/3">
                   <div className="aspect-square rounded-2xl bg-gray-800 overflow-hidden relative border-2 border-[#E05D3A]/50 shadow-2xl shadow-[#E05D3A]/20">
-                    {/* Placeholder for Founder Image if not available */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-black flex items-center justify-center">
-                      <Users className="w-20 h-20 text-gray-700" />
-                    </div>
-                    <div className="absolute bottom-4 left-4 bg-white/10 backdrop-blur-md px-3 py-1 rounded-lg border border-white/10">
+                    <Image
+                      src="/images/founder.jpg"
+                      alt="Idris Olubisi"
+                      fill
+                      className="object-cover"
+                    />
+                    <div className="absolute bottom-4 left-4 bg-white/10 backdrop-blur-md px-3 py-1 rounded-lg border border-white/10 z-10">
                       <span className="text-white font-bold text-sm">Idris Olubisi</span>
                     </div>
                   </div>
