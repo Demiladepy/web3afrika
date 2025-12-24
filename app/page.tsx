@@ -1,6 +1,6 @@
 import { Generator } from "@/components/Generator";
 import { NavbarConnectButton } from "@/components/NavbarConnectButton";
-import { Terminal, TrendingUp, Users, Globe2, Code2 } from "lucide-react";
+import { Terminal, TrendingUp, Users, Globe2, Code2, X, Linkedin } from "lucide-react";
 import Link from "next/link";
 
 export default function Home() {
@@ -44,7 +44,7 @@ export default function Home() {
           <div className="inline-flex items-center gap-3 px-6 py-3 glass-card rounded-full border border-[#00ff88]/30 hover:border-[#00ff88]/50 transition-all">
             <div className="w-2.5 h-2.5 rounded-full bg-[#00ff88] pulse-green shadow-lg shadow-[#00ff88]/50"></div>
             <span className="text-sm font-mono text-[#00ff88] uppercase tracking-wider font-bold">
-              🚀 System Status: Scaling
+              ✨ Community Impact Report
             </span>
           </div>
         </div>
@@ -62,7 +62,7 @@ export default function Home() {
 
           <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto font-medium leading-relaxed">
             Based on your on-chain activity, code commits, and community<br />
-            contributions in <span className="text-white font-bold">2024</span>.
+            contributions in <span className="text-white font-bold">2025</span>.
           </p>
         </header>
 
@@ -147,10 +147,18 @@ export default function Home() {
         </div>
 
         {/* Footer */}
-        <footer className="mt-20 pt-8 border-t border-[#0C6E5F]/20 text-center">
+        <footer className="mt-20 pt-8 border-t border-[#0C6E5F]/20 flex items-center justify-between">
           <p className="text-sm font-mono text-gray-600">
             © 2025 Web3Afrika. Scaling African Innovation.
           </p>
+          <div className="flex gap-4">
+            <Link href="https://x.com/web3afrika" target="_blank" className="w-8 h-8 rounded-lg glass-card flex items-center justify-center hover:bg-black/50 hover:border-[#00ff88]/50 transition-all text-gray-400 hover:text-white">
+              <X className="w-4 h-4" />
+            </Link>
+            <Link href="https://www.linkedin.com/company/web3afrika/" target="_blank" className="w-8 h-8 rounded-lg glass-card flex items-center justify-center hover:bg-[#0077b5]/20 hover:border-[#0077b5] transition-all text-gray-400 hover:text-[#0077b5]">
+              <Linkedin className="w-4 h-4" />
+            </Link>
+          </div>
         </footer>
       </div>
 

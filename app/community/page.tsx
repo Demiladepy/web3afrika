@@ -57,10 +57,10 @@ export default function CommunityPage() {
               <Trophy className="w-5 h-5" />
               View Hall of Fame
             </button>
-            <button className="px-8 py-4 glass-card border border-white/20 hover:border-[#00ff88]/50 text-white font-black text-lg uppercase tracking-wider rounded-2xl transition-all hover:scale-105 flex items-center gap-3">
+            <Link href="https://www.youtube.com/@web3afrika" target="_blank" className="px-8 py-4 glass-card border border-white/20 hover:border-[#00ff88]/50 text-white font-black text-lg uppercase tracking-wider rounded-2xl transition-all hover:scale-105 flex items-center gap-3">
               <Play className="w-5 h-5" />
               Watch Recap Video
-            </button>
+            </Link>
           </div>
         </header>
 
@@ -94,86 +94,42 @@ export default function CommunityPage() {
           </div>
         </div>
 
-        {/* Hall of Fame */}
-        <div className="mb-20">
-          <div className="flex items-center gap-4 mb-8">
-            <div className="text-sm font-bold text-[#EE3C22] uppercase tracking-wider">HALL OF FAME</div>
-            <div className="flex-1 h-px bg-gradient-to-r from-[#EE3C22] to-transparent"></div>
-          </div>
-          <h2 className="text-5xl font-black text-white mb-12">Featured Champion</h2>
-
-          <div className="glass-card p-8 rounded-3xl border border-white/10 hover-lift">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="relative h-64 rounded-2xl overflow-hidden bg-gradient-to-br from-[#0C6E5F]/20 to-[#00ff88]/20">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-6xl font-black text-white/20">📊</div>
-                </div>
-              </div>
-              <div>
-                <div className="flex items-start justify-between mb-4">
-                  <div className="flex items-center gap-3">
-                    <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#0C6E5F] to-[#00ff88] border-4 border-black"></div>
-                    <div>
-                      <div className="font-black text-white text-xl">Sarah Mensah</div>
-                      <div className="text-sm text-gray-400">Lead Developer</div>
-                    </div>
-                  </div>
-                  <span className="px-3 py-1 bg-[#EE3C22]/20 border border-[#EE3C22]/40 rounded-full text-xs font-bold text-[#EE3C22]">
-                    Hackathon Winner
-                  </span>
-                </div>
-                <h3 className="text-3xl font-black text-white mb-4">CERTIFLEX</h3>
-                <p className="text-gray-300 leading-relaxed mb-6">
-                  A decentralized certification platform revolutionizing credential verification. Sarah built a system that ensures privacy while maintaining transparency on-chain.
-                </p>
-                <div className="flex gap-2 mb-6 flex-wrap">
-                  <span className="px-3 py-1 glass-card rounded-lg text-xs font-bold text-white">Solidity</span>
-                  <span className="px-3 py-1 glass-card rounded-lg text-xs font-bold text-white">React</span>
-                  <span className="px-3 py-1 glass-card rounded-lg text-xs font-bold text-white">Zero-Knowledge Proofs</span>
-                </div>
-                <button className="px-6 py-3 glass-card border border-white/20 hover:border-[#00ff88]/50 text-white font-bold rounded-xl transition-all hover:scale-105 flex items-center gap-2">
-                  View Project
-                  <ArrowRight className="w-4 h-4" />
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
         {/* Builders & Shippers */}
         <div className="mb-20">
           <h2 className="text-5xl font-black text-white mb-12">Builders & Shippers</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="glass-card p-8 rounded-2xl hover-lift glow-hover">
-              <div className="w-16 h-16 rounded-xl bg-[#0C6E5F]/20 border border-[#0C6E5F]/40 flex items-center justify-center mb-6">
-                <Shield className="w-8 h-8 text-[#0C6E5F]" />
+            <div className="glass-card p-8 rounded-2xl hover-lift glow-hover relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-[#0C6E5F]/10 rounded-full blur-3xl"></div>
+              <div className="w-16 h-16 rounded-xl bg-[#0C6E5F]/20 border border-[#0C6E5F]/40 flex items-center justify-center mb-6 overflow-hidden">
+                <img src="/uploaded_image_sarah_new.jpg" alt="Community" className="w-full h-full object-cover opacity-80" />
               </div>
               <span className="px-3 py-1 bg-[#0C6E5F]/20 border border-[#0C6E5F]/40 rounded-full text-xs font-bold text-[#0C6E5F] mb-4 inline-block">
-                OPEN SOURCE
+                VOLUNTEER
               </span>
-              <h3 className="text-2xl font-black text-white mb-3">Privacy by Design</h3>
+              <h3 className="text-2xl font-black text-white mb-3">Growth & Confidence</h3>
               <p className="text-gray-300 leading-relaxed mb-6">
-                Contributing to core Layer 1 chains to enhance privacy protocols.
+                "At the start of 2024, I made a commitment to improve my communication skills... volunteered at @web3afrika in Lagos, which helped boost my confidence even more!"
               </p>
               <div className="flex items-center gap-3">
                 <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#0C6E5F] to-[#00ff88] border-2 border-black"></div>
                 <div>
-                  <div className="font-bold text-white">Yinka Oshidipe</div>
-                  <div className="text-sm text-gray-400">Core Contributor</div>
+                  <div className="font-bold text-white">Sarah Mensah</div>
+                  <div className="text-sm text-gray-400">Community Volunteer</div>
                 </div>
               </div>
             </div>
 
-            <div className="glass-card p-8 rounded-2xl hover-lift glow-hover">
-              <div className="w-16 h-16 rounded-xl bg-[#EE3C22]/20 border border-[#EE3C22]/40 flex items-center justify-center mb-6">
-                <TrendingUp className="w-8 h-8 text-[#EE3C22]" />
+            <div className="glass-card p-8 rounded-2xl hover-lift glow-hover relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-[#EE3C22]/10 rounded-full blur-3xl"></div>
+              <div className="w-16 h-16 rounded-xl bg-[#EE3C22]/20 border border-[#EE3C22]/40 flex items-center justify-center mb-6 overflow-hidden">
+                <img src="/uploaded_image_madev.png" alt="Community Event" className="w-full h-full object-cover opacity-80" />
               </div>
               <span className="px-3 py-1 bg-[#EE3C22]/20 border border-[#EE3C22]/40 rounded-full text-xs font-bold text-[#EE3C22] mb-4 inline-block">
-                GROWTH STORY
+                COMMUNITY
               </span>
-              <h3 className="text-2xl font-black text-white mb-3">From Zero to Hero</h3>
-              <p className="text-gray-300 leading-relaxed mb-6 italic">
-                "I gained the confidence to deploy my first mainnet contract thanks to the mentorship here."
+              <h3 className="text-2xl font-black text-white mb-3">Amazing Experience</h3>
+              <p className="text-gray-300 leading-relaxed mb-6">
+                "It was an amazing experience at @web3afrika last week! I met many passionate Web3 enthusiasts... Thank you, @web3afrika and @oasisonchain."
               </p>
               <div className="flex items-center gap-3">
                 <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#EE3C22] to-[#EC9120] border-2 border-black"></div>
@@ -184,18 +140,26 @@ export default function CommunityPage() {
               </div>
             </div>
 
-            <div className="glass-card p-8 rounded-2xl hover-lift glow-hover border-2 border-dashed border-[#00ff88]/30">
-              <div className="w-16 h-16 rounded-xl bg-[#0C6E5F]/20 border border-[#0C6E5F]/40 flex items-center justify-center mb-6">
-                <Plus className="w-8 h-8 text-[#00ff88]" />
+            <div className="glass-card p-8 rounded-2xl hover-lift glow-hover relative overflow-hidden">
+              <div className="w-16 h-16 rounded-xl bg-[#00ff88]/20 border border-[#00ff88]/40 flex items-center justify-center mb-6 overflow-hidden">
+                <img src="/uploaded_image_certiflex.jpg" alt="Team building Certiflex" className="w-full h-full object-cover opacity-80" />
               </div>
-              <h3 className="text-2xl font-black text-white mb-3">You're Next</h3>
+              <span className="px-3 py-1 bg-[#00ff88]/20 border border-[#00ff88]/40 rounded-full text-xs font-bold text-[#00ff88] mb-4 inline-block">
+                AYATHON
+              </span>
+              <h3 className="text-2xl font-black text-white mb-3">CERTIFLEX</h3>
               <p className="text-gray-300 leading-relaxed mb-6">
-                Start building today and be featured in our next wrap up.
+                "I'm proud to say, my team and I won the just concluded Ayathon. I had a lovely time building 'CERTIFLEX'... Special thanks to @ayahq_ and @web3afrika"
               </p>
-              <button className="w-full px-6 py-3 bg-gradient-to-r from-[#0C6E5F] to-[#00ff88] hover:from-[#00ff88] hover:to-[#0C6E5F] text-black hover:text-white font-black rounded-xl transition-all flex items-center justify-center gap-2">
-                Start Building
-                <ArrowRight className="w-4 h-4" />
-              </button>
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#00ff88] to-[#0C6E5F] border-2 border-black flex items-center justify-center">
+                  <span className="text-xs">🏆</span>
+                </div>
+                <div>
+                  <div className="font-bold text-white">Anoluwapo Ali</div>
+                  <div className="text-sm text-gray-400">Hackathon Winner</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -205,27 +169,27 @@ export default function CommunityPage() {
           <h2 className="text-5xl font-black text-white mb-12">Community Voices</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="glass-card p-6 rounded-2xl hover-lift">
-              <div className="font-mono text-xs text-[#00ff88] mb-4">&gt; console.log("Life changing");</div>
+              <div className="font-mono text-xs text-[#00ff88] mb-4">&gt; console.log("Bullish");</div>
               <p className="text-gray-300 leading-relaxed mb-4 italic">
-                "The hackathons pushed me to learn Rust. Now I'm contributing to Solana projects globally. This community is pure energy."
+                "Interesting to hear how intentional @olanetsoft n the team is about the community. I'm really bullish on Web3afrika!"
               </p>
-              <div className="text-sm font-bold text-white">— David K.</div>
+              <div className="text-sm font-bold text-white">— NonFungibleHuman</div>
             </div>
 
             <div className="glass-card p-6 rounded-2xl hover-lift">
-              <div className="font-mono text-xs text-[#00ff88] mb-4">&gt; sudo commit --message "Gratitude"</div>
+              <div className="font-mono text-xs text-[#00ff88] mb-4">&gt; sudo commit --message "Winner"</div>
               <p className="text-gray-300 leading-relaxed mb-4 italic">
-                "Web3Afrika isn't just a DAO, it's a family. The mentorship I received during the cohort was invaluable."
+                "Excited to win this week quiz challenge at @web3afrika, and also being a first time winner in the quiz challenge 😁"
               </p>
-              <div className="text-sm font-bold text-white">— Amara N.</div>
+              <div className="text-sm font-bold text-white">— Bukola Anuoluwapo</div>
             </div>
 
             <div className="glass-card p-6 rounded-2xl hover-lift">
               <div className="font-mono text-xs text-[#00ff88] mb-4">&gt; git push origin main</div>
               <p className="text-gray-300 leading-relaxed mb-4 italic">
-                "Finding a team for the hackathon was seamless. We didn't just build a project, we built a startup."
+                "I'm super excited to be here, live and direct at @web3afrika event, witnessing the FIRST collaboration between @oasisOnchain n @ThankArbitrum! 🎉"
               </p>
-              <div className="text-sm font-bold text-white">— Samuel O.</div>
+              <div className="text-sm font-bold text-white">— 𝒅𝒆𝒂𝒏 𓃵</div>
             </div>
           </div>
         </div>
@@ -236,26 +200,23 @@ export default function CommunityPage() {
           <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
             2025 was about scaling. 2026 is the Year of Dominance. Join the movement and ship products that matter.
           </p>
-          <button className="px-8 py-4 bg-gradient-to-r from-[#0C6E5F] to-[#00ff88] hover:from-[#00ff88] hover:to-[#0C6E5F] text-black hover:text-white font-black text-lg uppercase tracking-wider rounded-2xl transition-all shadow-2xl hover:scale-105">
+          <Link href="https://discord.com/invite/YMJ49PDTym" target="_blank" className="inline-block px-8 py-4 bg-gradient-to-r from-[#0C6E5F] to-[#00ff88] hover:from-[#00ff88] hover:to-[#0C6E5F] text-black hover:text-white font-black text-lg uppercase tracking-wider rounded-2xl transition-all shadow-2xl hover:scale-105">
             Join the Community
-          </button>
+          </Link>
         </div>
 
         {/* Footer */}
         <footer className="mt-20 pt-8 border-t border-[#0C6E5F]/20 flex items-center justify-between">
           <p className="text-sm font-mono text-gray-600">
-            © 2025 Web3Afrika. All rights reserved.
+            © 2025 Web3Afrika. Scaling African Innovation.
           </p>
           <div className="flex gap-4">
-            <button className="w-8 h-8 rounded-lg glass-card flex items-center justify-center hover:border-[#00ff88]/50 transition-colors">
-              <X className="w-4 h-4 text-gray-400" />
-            </button>
-            <button className="w-8 h-8 rounded-lg glass-card flex items-center justify-center hover:border-[#00ff88]/50 transition-colors">
-              <Linkedin className="w-4 h-4 text-gray-400" />
-            </button>
-            <button className="w-8 h-8 rounded-lg glass-card flex items-center justify-center hover:border-[#00ff88]/50 transition-colors">
-              <Download className="w-4 h-4 text-gray-400" />
-            </button>
+            <Link href="https://x.com/web3afrika" target="_blank" className="w-8 h-8 rounded-lg glass-card flex items-center justify-center hover:bg-black/50 hover:border-[#00ff88]/50 transition-all text-gray-400 hover:text-white">
+              <X className="w-4 h-4" />
+            </Link>
+            <Link href="https://www.linkedin.com/company/web3afrika/" target="_blank" className="w-8 h-8 rounded-lg glass-card flex items-center justify-center hover:bg-[#0077b5]/20 hover:border-[#0077b5] transition-all text-gray-400 hover:text-[#0077b5]">
+              <Linkedin className="w-4 h-4" />
+            </Link>
           </div>
         </footer>
       </div>
