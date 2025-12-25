@@ -97,14 +97,14 @@ export default function VisionPage() {
           </p>
 
           <div className="flex items-center justify-center gap-4 flex-wrap">
-            <button className="px-8 py-4 bg-gradient-to-r from-[#0C6E5F] to-[#00ff88] hover:from-[#00ff88] hover:to-[#0C6E5F] text-black hover:text-white font-black text-lg uppercase tracking-wider rounded-2xl transition-all shadow-2xl hover:scale-105 flex items-center gap-3">
+            <Link href="https://web3afrika.com" target="_blank" className="px-8 py-4 bg-gradient-to-r from-[#0C6E5F] to-[#00ff88] hover:from-[#00ff88] hover:to-[#0C6E5F] text-black hover:text-white font-black text-lg uppercase tracking-wider rounded-2xl transition-all shadow-2xl hover:scale-105 flex items-center gap-3">
               Mint Builder Pass
               <ArrowRight className="w-5 h-5" />
-            </button>
-            <button className="px-8 py-4 glass-card border border-white/20 hover:border-[#00ff88]/50 text-white font-black text-lg uppercase tracking-wider rounded-2xl transition-all hover:scale-105 flex items-center gap-3">
+            </Link>
+            <Link href="https://github.com/web3afrika" target="_blank" className="px-8 py-4 glass-card border border-white/20 hover:border-[#00ff88]/50 text-white font-black text-lg uppercase tracking-wider rounded-2xl transition-all hover:scale-105 flex items-center gap-3">
               Explore Tech Stack
               <Layers className="w-5 h-5" />
-            </button>
+            </Link>
           </div>
         </header>
 
@@ -226,9 +226,9 @@ export default function VisionPage() {
         <div className="glass-card p-12 rounded-3xl border border-[#00ff88]/30 text-center">
           <h2 className="text-4xl font-black text-white mb-4">Join the Next Cohort</h2>
           <p className="text-xl text-gray-300 mb-8">Get early access to developer tools and grants.</p>
-          <button className="px-8 py-4 glass-card border border-white/20 hover:border-[#00ff88]/50 text-white font-black text-lg uppercase tracking-wider rounded-2xl transition-all hover:scale-105">
+          <Link href="https://discord.com/invite/YMJ49PDTym" target="_blank" className="inline-block px-8 py-4 glass-card border border-white/20 hover:border-[#00ff88]/50 text-white font-black text-lg uppercase tracking-wider rounded-2xl transition-all hover:scale-105">
             Apply Now
-          </button>
+          </Link>
         </div>
 
         {/* Footer */}

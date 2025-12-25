@@ -55,10 +55,10 @@ export default function CommunityPage() {
           </p>
 
           <div className="flex items-center justify-center gap-4 flex-wrap">
-            <button className="px-8 py-4 bg-gradient-to-r from-[#0C6E5F] to-[#00ff88] hover:from-[#00ff88] hover:to-[#0C6E5F] text-black hover:text-white font-black text-lg uppercase tracking-wider rounded-2xl transition-all shadow-2xl hover:scale-105 flex items-center gap-3">
+            <Link href="#community-voices" className="px-8 py-4 bg-gradient-to-r from-[#0C6E5F] to-[#00ff88] hover:from-[#00ff88] hover:to-[#0C6E5F] text-black hover:text-white font-black text-lg uppercase tracking-wider rounded-2xl transition-all shadow-2xl hover:scale-105 flex items-center gap-3">
               <Trophy className="w-5 h-5" />
               View Hall of Fame
-            </button>
+            </Link>
             <Link href="https://www.youtube.com/@web3afrika" target="_blank" className="px-8 py-4 glass-card border border-white/20 hover:border-[#00ff88]/50 text-white font-black text-lg uppercase tracking-wider rounded-2xl transition-all hover:scale-105 flex items-center gap-3">
               <Play className="w-5 h-5" />
               Watch Recap Video
@@ -167,7 +167,7 @@ export default function CommunityPage() {
         </div>
 
         {/* Community Voices */}
-        <div className="mb-20">
+        <div className="mb-20" id="community-voices">
           <h2 className="text-5xl font-black text-white mb-12">Community Voices</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="glass-card p-6 rounded-2xl hover-lift">
